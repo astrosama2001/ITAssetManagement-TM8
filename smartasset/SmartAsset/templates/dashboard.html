@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+<h2>Asset Dashboard</h2>
+<form method="POST" action="/add_asset">
+  <input name="name" placeholder="Asset Name" required>
+  <input name="category" placeholder="Category">
+  <input name="serial_number" placeholder="Serial Number">
+  <input name="assigned_to" placeholder="Assigned To">
+  <input name="maintenance_date" placeholder="Maintenance Date">
+  <button type="submit">Add Asset</button>
+</form>
+<ul>
+  {% for asset in assets %}
+    <li>{{ asset.name }} - {{ asset.assigned_to }}</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('auth.logout') }}">Logout</a>
+</body>
+</html>
