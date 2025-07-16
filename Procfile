@@ -1,1 +1,2 @@
-web: gunicorn run:app
+web: gunicorn smartasset.app.run:app
+
