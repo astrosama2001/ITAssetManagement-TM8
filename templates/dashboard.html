@@ -1,22 +1,86 @@
-
 <!DOCTYPE html>
-<html>
-<head><title>Dashboard</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - SmartAsset</title>
+  <style>
+    body {
+      background-color: #00205B;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      text-align: center;
+    }
+    .header {
+      padding: 20px;
+      background-color: #C69214;
+      color: #00205B;
+    }
+    .asset-form {
+      margin: 30px auto;
+      background-color: #ffffff10;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #C69214;
+      width: 400px;
+    }
+    input, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      background-color: #fff;
+      color: #00205B;
+    }
+    button {
+      background-color: #C69214;
+      color: #00205B;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background-color: #ffffff10;
+      margin: 5px auto;
+      padding: 10px;
+      border-radius: 5px;
+      width: 60%;
+    }
+    img.logo {
+      max-width: 150px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
 <body>
-<h2>Asset Dashboard</h2>
-<form method="POST" action="/add_asset">
-  <input name="name" placeholder="Asset Name" required>
-  <input name="category" placeholder="Category">
-  <input name="serial_number" placeholder="Serial Number">
-  <input name="assigned_to" placeholder="Assigned To">
-  <input name="maintenance_date" placeholder="Maintenance Date">
-  <button type="submit">Add Asset</button>
-</form>
-<ul>
-  {% for asset in assets %}
-    <li>{{ asset.name }} - {{ asset.assigned_to }}</li>
-  {% endfor %}
-</ul>
-<a href="{{ url_for('auth.logout') }}">Logout</a>
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Florida_International_University_logo.svg/320px-Florida_International_University_logo.svg.png" alt="FIU Logo" class="logo">
+    <h1>SmartAsset Dashboard</h1>
+  </div>
+
+  <div class="asset-form">
+    <form method="POST" action="/add_asset">
+      <input name="name" placeholder="Asset Name" required>
+      <input name="category" placeholder="Category">
+      <input name="serial_number" placeholder="Serial Number">
+      <input name="assigned_to" placeholder="Assigned To">
+      <input name="maintenance_date" placeholder="Maintenance Date">
+      <button type="submit">Add Asset</button>
+    </form>
+  </div>
+
+  <h2>Asset List</h2>
+  <ul>
+    {% for asset in assets %}
+      <li>{{ asset.name }} - Assigned to: {{ asset.assigned_to }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('auth.logout') }}" style="color: #C69214;">Logout</a>
 </body>
 </html>
